@@ -37,6 +37,8 @@
   <h1>Loan Request Form</h1>
   <form id="loanForm">
     <input type="text" id="name" placeholder="Enter your name" required><br>
+    <input type="email" id="email" placeholder="Enter your email" required><br>
+    <input type="tel" id="phone" placeholder="Enter your phone number" required><br>
     <select id="loanType" required>
       <option value="">Select Loan Type</option>
       <option value="Personal Loan">Personal Loan</option>
@@ -52,23 +54,4 @@
       event.preventDefault();
 
       const name = document.getElementById("name").value;
-      const loanType = document.getElementById("loanType").value;
-
-      // CSV content
-      const csvContent = "Name,LoanType\n" + name + "," + loanType;
-
-      // Create downloadable file
-      const blob = new Blob([csvContent], { type: "text/csv" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "loan_requests.csv";
-      a.click();
-
-      URL.revokeObjectURL(url);
-      alert("✅ Your loan request has been saved to loan_requests.csv");
-    });
-  </script>
-</body>
-</html>
+      const email
