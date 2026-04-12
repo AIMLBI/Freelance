@@ -1,65 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Loan Request Form</title>
-</head>
-<body>
-  <h1>Loan Request Form</h1>
-  <form id="loanForm">
-    <input type="text" id="name" placeholder="Enter your name" required><br>
-    <input type="email" id="email" placeholder="Enter your email" required><br>
-    <input type="tel" id="phone" placeholder="Enter your phone number" required><br>
-    <select id="loanType" required>
-      <option value="">Select Loan Type</option>
-      <option value="Personal Loan">Personal Loan</option>
-      <option value="Home Loan">Home Loan</option>
-      <option value="Car Loan">Car Loan</option>
-      <option value="Education Loan">Education Loan</option>
-    </select><br>
-    <button type="submit">Submit</button>
-  </form>
+<form id="loanForm">
+  <input type="text" name="name" placeholder="Enter your name" required><br>
+  <input type="email" name="email" placeholder="Enter your email" required><br>
+  <input type="tel" name="phone" placeholder="Enter your phone number" required><br>
+  <select name="loanType" required>
+    <option value="">Select Loan Type</option>
+    <option value="Personal Loan">Personal Loan</option>
+    <option value="Home Loan">Home Loan</option>
+    <option value="Car Loan">Car Loan</option>
+    <option value="Education Loan">Education Loan</option>
+  </select><br>
+  <button type="submit">Submit</button>
+</form>
 
-  <script>
-    const token = "YOUR_GITHUB_TOKEN"; // Replace with your personal access token
-    const repoOwner = "almlbi";        // Replace with your GitHub username
-    const repoName = "freelance";      // Replace with your repo name
-    const filePath = "loan_requests.csv";
+<script>
+document.getElementById("loanForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-    document.getElementById("loanForm").addEventListener("submit", async function(event) {
-      event.preventDefault();
+  const formData = {
+    name: event.target.name.value,
+    email: event.target.email.value,
+    phone: event.target.phone.value,
+    loanType: event.target.loanType.value
+  };
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const phone = document.getElementById("phone").value;
-      const loanType = document.getElementById("loanType").value;
+  const response = await fetch("http://localhost:3000/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
 
-      const newRow = `\n${name},${email},${phone},${loanType}`;
-
-      // Get current file content
-      const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        headers: { Authorization: `token ${token}` }
-      });
-      const data = await response.json();
-      const content = atob(data.content);
-      const updatedContent = content + newRow;
-
-      // Commit updated file
-      await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `token ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: "Add new loan request",
-          content: btoa(updatedContent),
-          sha: data.sha
-        })
-      });
-
-      alert("✅ Loan request saved to GitHub!");
-    });
-  </script>
-</body>
-</html>
+  const result = await response.text();
+  alert(result);
+});
+</script>
