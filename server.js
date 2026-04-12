@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Replace with your values
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // store securely in environment variable
+const GITHUB_TOKEN = "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"; // store securely in environment variable
 const REPO_OWNER = "almlbi";
 const REPO_NAME = "freelance";
 const FILE_PATH = "loan_requests.csv";
