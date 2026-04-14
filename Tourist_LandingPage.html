@@ -3,75 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tourist Website</title>
+  <title>Tourist Landing Page</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #34495e;
-    }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-    }
-    nav a:hover {
-      background: #1abc9c;
-    }
+    body { margin:0; font-family: Arial, sans-serif; }
+    header { background:#2c3e50; color:#fff; padding:20px; text-align:center; }
+    nav { background:#34495e; display:flex; justify-content:center; }
+    nav a { color:#fff; padding:14px 20px; text-decoration:none; transition:0.3s; }
+    nav a:hover { background:#1abc9c; transform:scale(1.1); }
+
     .hero {
-      background: url('https://source.unsplash.com/1600x600/?travel,tourism') no-repeat center center/cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2em;
-      font-weight: bold;
+      background:url('https://source.unsplash.com/1600x600/?travel') no-repeat center/cover;
+      height:400px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:#fff; font-size:2em; font-weight:bold; text-shadow:2px 2px 5px rgba(0,0,0,0.5);
     }
-    .section {
-      padding: 40px;
-      text-align: center;
+    .search-bar {
+      margin-top:20px;
+      background:#fff; border-radius:30px; padding:10px; display:flex; width:60%;
     }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    .search-bar input {
+      border:none; flex:1; padding:10px; border-radius:30px; outline:none;
     }
+    .search-bar button {
+      background:#1abc9c; border:none; color:#fff; padding:10px 20px; border-radius:30px; cursor:pointer;
+      transition:0.3s;
+    }
+    .search-bar button:hover { background:#16a085; }
+
+    .section { padding:40px; text-align:center; }
+    .cards { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
     .card {
-      background: #ecf0f1;
-      border-radius: 8px;
-      width: 300px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      background:#ecf0f1; border-radius:8px; width:300px; padding:20px;
+      box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:0.3s;
     }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 20px;
-    }
+    .card img { width:100%; border-radius:8px; }
+    .card:hover { transform:translateY(-10px); box-shadow:0 8px 12px rgba(0,0,0,0.2); }
+
+    footer { background:#2c3e50; color:#fff; text-align:center; padding:20px; margin-top:20px; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Explore the World</h1>
+    <h1>Welcome to ExploreWorld</h1>
     <p>Your gateway to amazing destinations</p>
   </header>
   <nav>
@@ -81,7 +53,12 @@
   </nav>
   <div class="hero">
     Discover Beautiful Places
+    <div class="search-bar">
+      <input type="text" placeholder="Search destinations...">
+      <button>Search</button>
+    </div>
   </div>
+
   <section id="destinations" class="section">
     <h2>Top Destinations</h2>
     <div class="cards">
@@ -102,17 +79,20 @@
       </div>
     </div>
   </section>
+
   <section id="about" class="section">
     <h2>About Us</h2>
     <p>We help travelers explore the world by providing curated guides and recommendations for unforgettable experiences.</p>
   </section>
+
   <section id="contact" class="section">
     <h2>Contact Us</h2>
     <p>Email: info@touristwebsite.com</p>
     <p>Phone: +123 456 7890</p>
   </section>
+
   <footer>
-    <p>&copy; 2026 Tourist Website. All rights reserved.</p>
+    <p>&copy; 2026 ExploreWorld. All rights reserved.</p>
   </footer>
 </body>
 </html>
